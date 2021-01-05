@@ -1,0 +1,38 @@
+.icon-comment {
+  background-image: url('~@/assets/img/comment.png');
+}
+.icon-comment-like,
+.icon-comment-liked {
+  // display: inline-block;
+  margin-right: 5px;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  vertical-align: -3px;
+}
+
+.icon-comment-like {
+  background-position: -25px -25px;
+}
+.comment__zan.done {
+  color: #31c27c;
+}
+
+.comment__zan.done .icon-comment-like,
+.comment__zan:hover .icon-comment-like,
+.icon-comment-liked {
+  background-position: 0 -25px;
+}
+
+.icon-comment-feedback {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background-position: -25px -50px;
+  font-size: 0;
+  vertical-align: middle;
+}
+.icon-comment-feedback.done,
+.icon-comment-feedback:hover {
+  background-position: 0 -50px;
+}

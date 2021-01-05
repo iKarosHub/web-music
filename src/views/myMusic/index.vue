@@ -1,6 +1,6 @@
 <template>
-  <div>
-    this is playList page
+  <div style="margin-top: 100px">
+    my music
   </div>
 </template>
 

@@ -10,12 +10,14 @@
       <li class="tpl-item" v-for="item in topListData" :key="item.id">
         <div class="tpl-item-box">
           <div class="tpl-cover">
-            <!-- 封面 -->
-            <img class="tpl-pic" :src="item.coverImgUrl" :alt="item.name" />
-            <!-- 更新时间 -->
-            <span class="tpl-update">{{ formatDate(item.updateTime) }}更新</span>
-            <!-- 播放按钮 -->
-            <i class="cover-icon-play"></i>
+            <router-link :to="{ path: '/songlist', query: { id: item.id, timestamp: new Date().getTime() } }">
+              <!-- 封面 -->
+              <img class="tpl-pic" :src="item.coverImgUrl" :alt="item.name" />
+              <!-- 更新时间 -->
+              <span class="tpl-update">{{ formatDate(item.updateTime) }}更新</span>
+              <!-- 播放按钮 -->
+              <i class="cover-icon-play"></i>
+            </router-link>
           </div>
           <ul class="tpl-song-list">
             <li class="song-list-item" v-for="(item2, index2) in item.tracks" :key="index2">

@@ -5,6 +5,8 @@ import store from './store'
 
 // 导入重置样式
 import '@/assets/scss/reset.scss'
+// 图标样式
+import '@/assets/scss/icon.scss'
 
 // 引入Element
 import ElementUI from 'element-ui'

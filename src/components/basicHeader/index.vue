@@ -2,7 +2,7 @@
   <!-- header布局 -->
   <ul class="section_inner">
     <li class="header-logo">
-      <img src="@/assets/img/logo.svg" alt="" />
+      <router-link to="/"><img src="@/assets/img/logo.svg" alt=""/></router-link>
     </li>
     <li>
       <!-- 顶部导航栏区域 -->
@@ -42,7 +42,7 @@ export default {
   .header-logo {
     width: 200px;
     height: 100%;
-    background-color: red;
+    background-image: linear-gradient(90deg, #ff5a4c 0%, #ff1d12 100%);
 
     img {
       width: 97%;

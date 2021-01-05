@@ -3,11 +3,9 @@
     <!-- 横幅 -->
     <banner :bannersDate="bannerList"></banner>
     <!-- 歌单推荐 -->
-    <music-theme themeTitle="推荐歌单" :themeData="rcmdSongList"></music-theme>
+    <rcmd-song-list themeTitle="推荐歌单" :themeData="rcmdSongList"></rcmd-song-list>
     <!-- 新歌首发 -->
     <new-song :songData="newSongList"></new-song>
-    <!-- 最新专辑 -->
-    <music-theme themeTitle="最新专辑" :themeData="newAlbumList"></music-theme>
     <!-- 排行榜 -->
     <top-list :topListData="topList"></top-list>
   </div>
@@ -15,7 +13,7 @@
 
 <script>
 import Banner from '@/components/banner'
-import MusicTheme from '@/components/musicTheme'
+import RcmdSongList from '@/components/musicTheme/RcmdSongList'
 import NewSong from '@/components/musicTheme/NewSong'
 import TopList from '@/components/musicTheme/TopList'
 // api
@@ -27,7 +25,7 @@ import { apiTopList } from '@/api/toplist'
 export default {
   components: {
     Banner,
-    MusicTheme,
+    RcmdSongList,
     NewSong,
     TopList
   },
@@ -54,7 +52,7 @@ export default {
     getDiscoverData() {
       // 获取discover 横幅数据
       apiDiscoverData().then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         res = res.data
         if (res.code !== 200) {
           return this.$message.error('获取首页数据失败')
@@ -64,7 +62,7 @@ export default {
       })
       // 获取推荐歌单数据
       apiRcmdSong(10).then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         res = res.data
         if (res.code !== 200) {
           return this.$message.error('获取推荐歌单失败')

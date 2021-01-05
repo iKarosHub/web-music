@@ -94,6 +94,32 @@ export const utils = {
       }
       // 默认返回年月日
       return `${y}-${m}-${d}`
+    },
+    // 下载MP3
+    // 下载服务器的MP3文件
+    downloadMp3(filePath) {
+      fetch(filePath)
+        .then(res => res.blob())
+        .then(blob => {
+          const a = document.createElement('a')
+          document.body.appendChild(a)
+          a.style.display = 'none'
+          // 使用获取到的blob对象创建的url
+          const url = window.URL.createObjectURL(blob)
+          a.href = url
+          // 指定下载的文件名
+          a.download = this.songName + '-' + this.songArtist + '.mp3'
+          a.click()
+          document.body.removeChild(a)
+          // 移除blob对象的url
+          window.URL.revokeObjectURL(url)
+        })
+    },
+    // 格式化歌词
+    formatLyric(lyric) {
+      var lyricRex = /\[\d*:\d*\.\d*\](\s*)/g
+      var newLyric = lyric.replace(lyricRex, '')
+      return newLyric
     }
   }
 }

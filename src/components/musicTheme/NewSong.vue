@@ -12,14 +12,14 @@
         <div class="song-item-box">
           <!-- 歌曲封面 -->
           <div class="song-cover">
-            <a href="#">
+            <router-link :to="{ path: '/song', query: { id: item.id, timestamp: new Date().getTime() } }">
               <!-- 封面照片 -->
               <img class="song-pic" :src="item.album.picUrl" :alt="item.name" />
               <!-- 封面遮罩 -->
               <i class="cover-mask"></i>
               <!-- 播放图标 -->
               <i class="cover-icon-play"></i>
-            </a>
+            </router-link>
           </div>
 
           <!-- 歌曲信息 -->

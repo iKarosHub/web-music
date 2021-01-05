@@ -1,42 +1,32 @@
 <template>
-  <div class="section_inner song-list-box" :key="$route.fullPath">
-    <!-- 歌单信息 -->
-    <div class="song-list-info">
-      <!-- 歌单封面 -->
-      <div class="song-list-cover">
-        <img :src="songListDetail.coverImgUrl" :alt="songListDetail.name" />
+  <div class="section_inner album-box" :key="$route.fullPath">
+    <!-- 专辑信息 -->
+    <div class="album-info">
+      <!-- 专辑封面 -->
+      <div class="album-cover">
+        <img :src="albumInfo.picUrl" :alt="albumInfo.name" />
       </div>
-      <!-- 歌单详情 -->
-      <div class="song-list-detail">
-        <!-- 歌单名 -->
-        <h3 class="song-list-name">{{ songListDetail.name }}</h3>
-        <!-- 歌单创建者 ps：此处报错，需先判断获取到创建者信息才渲染 -->
-        <div class="song-list-creator" v-if="songListDetail.creator">
-          <el-avatar shape="circle" :size="35" fit="fit" :src="songListDetail.creator.avatarUrl"></el-avatar>
-          <div class="creator-nickname">{{ songListDetail.creator.nickname }}</div>
-          <div class="creator-update" style="font-size: 14px;">
-            {{ formatDate(songListDetail.updateTime) + '创建' }}
-          </div>
-        </div>
-        <!-- 歌单简介 -->
-        <div class="song-list-about" v-if="songListDetail.tags">
-          <!-- 歌单标签 -->
-          <div class="song-list-tags" v-if="songListDetail.tags.length">
-            标签 :
-            <el-tag size="mini" v-for="(item, index) in songListDetail.tags" :key="index" style="margin-right: 5px;">{{
-              item
-            }}</el-tag>
-          </div>
+      <!-- 专辑详情 -->
+      <div class="album-detail">
+        <!-- 专辑名 -->
+        <h3 class="album-name">{{ albumInfo.name }}</h3>
+
+        <!-- 专辑简介 -->
+        <div class="album-about">
           <!-- 歌曲、播放 数量 -->
-          <div class="song-list-count">
-            <span>{{ '歌曲 : ' + songListDetail.trackCount }}</span>
+          <div class="album-artist" v-if="albumInfo.artist">
+            <span>{{ '歌手 : ' + albumInfo.artist.name }}</span>
           </div>
-          <div class="song-list-count">
-            <span>{{ '播放 : ' + formatCount(songListDetail.playCount) }}</span>
+          <div class="album-time">
+            <span>{{ '发行时间 : ' + formatDate(albumInfo.publishTime) }}</span>
           </div>
-          <!-- 歌单简介 -->
-          <div class="song-list-desc" ref="songListDescRef" :style="{ height: descHeight + 'px' }">
-            <span>{{ '简介 : ' + songListDetail.description }}</span>
+          <!-- 专辑发行公司 -->
+          <div class="album-company">
+            <span>{{ '发行公司 : ' + albumInfo.company }}</span>
+          </div>
+          <!-- 专辑简介 -->
+          <div ref="albumDescRef" class="album-desc" :style="{ height: descHeight + 'px' }">
+            <span class="desc-text">{{ '简介 : ' + albumInfo.description }}</span>
           </div>
           <div>
             <el-button size="mini" @click="showDesc" class="desc-btn">{{ isClick }}</el-button>
@@ -45,8 +35,8 @@
       </div>
     </div>
     <!-- 歌单区域 -->
-    <div class="song-list-table">
-      <song-list-table :songList="songListInfo"></song-list-table>
+    <div class="album-table">
+      <song-list-table :songList="albumSongList"></song-list-table>
     </div>
     <!-- 提示下载app -->
     <div class="to-down-app">
@@ -55,8 +45,8 @@
         <a href="https://music.163.com/#/download" class="down-btn">立刻下载</a>
       </div>
     </div>
-    <!-- 歌单评论 -->
-    <div class="song-list-comments">
+    <!-- 专辑评论 -->
+    <div class="album-comments">
       <comments></comments>
     </div>
   </div>
@@ -76,23 +66,23 @@ export default {
   },
   data() {
     return {
-      descHeight: 25,
+      descHeight: 70,
       isClick: '展开'
     }
   },
   computed: {
-    ...mapGetters(['songListDetail', 'songListInfo'])
+    ...mapGetters(['albumDetail', 'albumSongList', 'albumInfo'])
   },
   mounted() {
-    this.getSongListDetail(this.$route.query.id)
+    this.getAlbumDetail(this.$route.query.id)
   },
   methods: {
     showDesc() {
       if (this.isClick === '展开') {
-        this.descHeight = this.$refs.songListDescRef.scrollHeight
+        this.descHeight = this.$refs.albumDescRef.scrollHeight
         this.isClick = '收起'
       } else if (this.isClick === '收起') {
-        this.descHeight = 25
+        this.descHeight = 70
         this.isClick = '展开'
       }
     }
@@ -101,12 +91,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.song-list-box {
+.album-box {
   margin-top: 40px;
-  .song-list-info {
+  .album-info {
     display: flex;
     margin-bottom: 35px;
-    .song-list-cover {
+    .album-cover {
       width: 250px;
       height: 250px;
       margin-right: 50px;
@@ -115,9 +105,9 @@ export default {
         height: 100%;
       }
     }
-    .song-list-detail {
+    .album-detail {
       flex: 1;
-      .song-list-name {
+      .album-name {
         font-size: 32px;
         line-height: 50px;
         overflow: hidden;
@@ -125,7 +115,7 @@ export default {
         white-space: nowrap;
         max-width: 70%;
       }
-      .song-list-creator {
+      .album-creator {
         margin-top: 10px;
         display: flex;
         align-items: center;
@@ -139,21 +129,21 @@ export default {
           color: #666;
         }
       }
-      .song-list-about {
+      .album-about {
         margin: 10px;
         font-size: 14px;
-        line-height: 25px;
         color: #666;
+        line-height: 25px;
       }
     }
   }
-  .song-list-table {
+  .album-table {
     margin-bottom: 60px;
   }
-  .song-list-comments {
+  .album-comments {
     // background-color: #ccc;
     margin-bottom: 50px;
-    padding: 20px 0;
+    padding: 20px 30px;
   }
 }
 .to-down-app {
@@ -179,8 +169,8 @@ export default {
     }
   }
 }
-.song-list-desc {
-  height: 30px;
+.album-desc {
+  height: 70px;
   line-height: 1.7em;
   overflow: hidden;
   position: relative;

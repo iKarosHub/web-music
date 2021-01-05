@@ -8,6 +8,7 @@
       <keep-alive>
         <router-view :key="$route.fullPath"></router-view>
       </keep-alive>
+      <play-list></play-list>
       <play-bar></play-bar>
     </main>
     <footer>
@@ -20,11 +21,13 @@
 import BasicHeader from '@/components/basicHeader'
 import BasicFooter from '@/components/basicFooter'
 import PlayBar from '@/components/playBar'
+import PlayList from '@/components/playBar/PlayList'
 export default {
   components: {
     BasicHeader,
     BasicFooter,
-    PlayBar
+    PlayBar,
+    PlayList
   }
 }
 </script>

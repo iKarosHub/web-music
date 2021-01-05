@@ -1,0 +1,122 @@
+// 播放器图标
+.icon-player {
+  background-image: url('~@/assets/img/player.png');
+  cursor: pointer;
+  // 改变颜色
+  filter: brightness(40%);
+}
+.icon-player:hover {
+  filter: brightness(20%);
+}
+// 上一曲、下一曲
+.icon-prev,
+.icon-next {
+  display: inline-block;
+  width: 19px;
+  height: 20px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.icon-prev {
+  background-position: 0px -30px;
+}
+.icon-next {
+  background-position: 0 -52px;
+}
+// 播放、暂停
+.icon-play,
+.icon-pause {
+  display: inline-block;
+  width: 21px;
+  height: 29px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.icon-play {
+  background-position: 0 0;
+}
+.icon-pause {
+  background-position: -30px 0;
+}
+// 喜欢
+.icon-like,
+.icon-liked {
+  display: inline-block;
+  width: 23px;
+  height: 21px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.icon-like {
+  background-position: 0 -96px;
+}
+.icon-liked {
+  background-position: -30px -96px;
+}
+// 音量、静音
+.icon-voice,
+.icon-no-voice {
+  display: inline-block;
+  width: 26px;
+  height: 21px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.icon-voice {
+  background-position: 0 -144px;
+}
+.icon-no-voice {
+  background-position: 0 -182px;
+}
+// 下载
+.icon-down {
+  display: inline-block;
+  width: 22px;
+  height: 21px;
+  overflow: hidden;
+  vertical-align: top;
+  background-position: 0 -120px;
+}
+// 歌单
+.icon-songlist {
+  display: inline-block;
+  width: 26px;
+  height: 23px;
+  overflow: hidden;
+  vertical-align: top;
+  background-position: 0 -370px;
+}
+// 回复图标
+.icon-comment {
+  background-image: url('~@/assets/img/comment.png');
+  cursor: pointer;
+}
+// 赞
+.icon-zan,
+.icon-zaned {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  vertical-align: top;
+}
+// 赞
+.icon-zan {
+  background-position: -25px -25px;
+}
+.icon-zaned {
+  background-position: 0 -25px;
+}
+
+// 回复
+.icon-reply {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  overflow: hidden;
+  vertical-align: top;
+  background-position: -25px -50px;
+}
+.icon-reply:hover {
+  background-position: 0 -50px;
+}

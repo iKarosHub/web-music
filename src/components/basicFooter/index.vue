@@ -12,8 +12,8 @@ export default {}
 
 <style lang="scss" scoped>
 .basic-footer {
-  height: 50px;
-  line-height: 50px;
+  height: 150px;
+  line-height: 90px;
   background-color: #f2f2f2;
   p {
     color: #666666;

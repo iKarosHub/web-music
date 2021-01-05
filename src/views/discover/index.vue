@@ -20,19 +20,15 @@
 <script>
 import { mapGetters } from 'vuex'
 import Discover from './children/Discover'
-import Album from './children/Album'
 import Artist from './children/Artist'
-import PlayList from './children/PlayList'
+import SongList from './children/SongList'
 import TopList from './children/TopList'
-import Radio from './children/Radio'
 export default {
   components: {
     Discover,
-    Album,
     Artist,
-    PlayList,
-    TopList,
-    Radio
+    SongList,
+    TopList
   },
   computed: {
     ...mapGetters(['discoverNavActiveIndex'])
@@ -50,20 +46,12 @@ export default {
           title: '排行榜'
         },
         {
-          component: 'PlayList',
+          component: 'SongList',
           title: '歌单'
-        },
-        {
-          component: 'Radio',
-          title: '电台'
         },
         {
           component: 'Artist',
           title: '歌手'
-        },
-        {
-          component: 'Album',
-          title: '新碟'
         }
       ],
       // 动态组件

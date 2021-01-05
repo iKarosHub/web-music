@@ -1,5 +1,5 @@
 <template>
-  <el-menu :default-active="topNavActiveIndex" mode="horizontal" @select="handleSelect">
+  <el-menu :default-active="topNavActiveIndex" mode="horizontal" @select="handleSelect" router>
     <el-menu-item :index="item.path" v-for="(item, index) in topNav" :key="index">{{ item.title }}</el-menu-item>
   </el-menu>
 </template>
@@ -52,7 +52,7 @@ export default {
     font-size: 18px;
   }
   .el-menu-item.is-active {
-    border-bottom: 3px solid red;
+    border-bottom: 3px solid #ff1d12;
   }
 }
 </style>

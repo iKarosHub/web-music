@@ -44,3 +44,21 @@ export function apiSongUrl(id) {
     }
   })
 }
+
+// 音乐是否可用
+export function apiCheckMusic(id) {
+  return request({
+    method: 'get',
+    url: '/check/music',
+    params: { id }
+  })
+}
+
+// 获取歌词
+export function apiSongLyric(id) {
+  return request({
+    method: 'get',
+    url: '/lyric',
+    params: { id }
+  })
+}

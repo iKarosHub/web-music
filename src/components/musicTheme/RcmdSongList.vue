@@ -3,7 +3,9 @@
     <!-- 音乐标题 -->
     <div class="theme-header">
       <h2 class="theme-title">{{ themeTitle }}</h2>
-      <div>更多<i class="el-icon-arrow-right"></i></div>
+      <div>
+        <router-link to="/songlistpage">更多<i class="el-icon-arrow-right"></i></router-link>
+      </div>
     </div>
 
     <!-- 音乐主体 -->
@@ -11,7 +13,7 @@
       <li class="music-item" v-for="item in themeData" :key="item.id">
         <!-- 音乐封面 -->
         <div class="music-cover">
-          <router-link :to="{ path: '/songlistpage', query: { id: item.id, timestamp: new Date().getTime() } }">
+          <router-link :to="{ path: '/songlist', query: { id: item.id, timestamp: new Date().getTime() } }">
             <!-- 封面照片 -->
             <img class="cover-pic" :src="item.picUrl" :alt="item.name" />
             <!-- 封面遮罩 -->
@@ -23,9 +25,7 @@
         <!-- 音乐描述 -->
         <h4 class="music-desc">{{ item.name }}</h4>
         <!-- 音乐播放量 -->
-        <div v-if="item.playCount" class="play-count">播放量：{{ formatCount(item.playCount) }}</div>
-        <!-- 音乐歌手 -->
-        <div v-else class="music-artist">{{ item.artist.name }}</div>
+        <div class="play-count">播放量：{{ formatCount(item.playCount) }}</div>
       </li>
     </ul>
   </div>
@@ -51,7 +51,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid #ff1d12;
 
     .theme-title {
       font-size: 24px;
